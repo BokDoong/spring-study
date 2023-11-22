@@ -41,7 +41,7 @@ public class Store extends BaseTimeEntity {
 
     @OneToMany(mappedBy = "store", cascade = CascadeType.ALL)
     private List<StoreClosedDay> storeClosedDays = new ArrayList<>();
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "region_id")
     private Region region;
 }
