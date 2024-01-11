@@ -40,8 +40,10 @@ public class User extends BaseTimeEntity {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user")
     private List<MissionUser> missionUsers = new ArrayList<>();
+    @OneToMany(mappedBy = "user")
+    private List<UserPrefer> userPrefers = new ArrayList<>();
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private UserImage userImage = new UserImage();
 
@@ -57,5 +59,7 @@ public class User extends BaseTimeEntity {
         this.address = new Address(firstAddress, secondAddress);
         this.point = 0;
         this.role = Role.USER;
+        this.missionUsers = new ArrayList<>();
+        this.userPrefers = new ArrayList<>();
     }
 }

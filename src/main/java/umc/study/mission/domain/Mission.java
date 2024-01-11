@@ -29,7 +29,7 @@ public class Mission extends BaseTimeEntity {
     @Column(name = "store_id")
     private Long storeId;
 
-    @OneToMany(mappedBy = "mission", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "mission")
     private List<MissionUser> missionUsers = new ArrayList<>();
 
     @Builder
