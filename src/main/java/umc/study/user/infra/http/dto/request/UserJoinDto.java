@@ -5,7 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @AllArgsConstructor
@@ -18,11 +20,12 @@ public class UserJoinDto {
     private String email;
     @NotBlank(message = "password is blank")
     private String password;
-    @NotBlank(message = "phoneNumber is blank")
+    @NotNull(message = "genderId is null")
+    private Integer genderId;
+    @NotNull(message = "categoryId is null")
+    private List<Long> categoryIds;
     private String phoneNumber;
-    @NotBlank(message = "firstAddress is blank")
     private String firstAddress;
-    @NotBlank(message = "secondAddress is blank")
     private String secondAddress;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm", timezone = "Asia/Seoul")
     private LocalDateTime birthDate;

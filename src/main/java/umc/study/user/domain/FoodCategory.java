@@ -30,4 +30,8 @@ public class FoodCategory extends BaseTimeEntity {
         this.name = name;
         this.userPrefers = new ArrayList<>();
     }
+
+    public void addUserPrefer(UserPrefer userPrefer) {
+        userPrefers.add(userPrefer);
+    }
 }

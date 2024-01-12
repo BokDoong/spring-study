@@ -1,6 +1,7 @@
 package umc.study.user.domain;
 
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import umc.study.common.BaseTimeEntity;
@@ -23,4 +24,10 @@ public class UserPrefer extends BaseTimeEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "foodcategory_id")
     private FoodCategory foodCategory;
+
+    @Builder
+    public UserPrefer(User user, FoodCategory foodCategory) {
+        this.user = user;
+        this.foodCategory = foodCategory;
+    }
 }

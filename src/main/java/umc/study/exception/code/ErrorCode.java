@@ -23,8 +23,12 @@ public enum ErrorCode {
             "서비스에 문제가 발생한 경우"),
 
     // Store
-    TALE_NOT_FOUND(StoreCode.NOT_FOUND.getCode(), NOT_FOUND, "존재하지 않는 가게"),
-    TALE_NOT_CREATED(StoreCode.NOT_OPENED.getCode(), NOT_FOUND, "영업 중이지 않은 가게"),
+    STORE_NOT_FOUND(StoreCode.NOT_FOUND.getCode(), NOT_FOUND, "존재하지 않는 가게"),
+    STORE_NOT_CREATED(StoreCode.NOT_OPENED.getCode(), NOT_FOUND, "영업 중이지 않은 가게"),
+
+    // User
+    USER_NOT_FOUND(UserCode.USER_NOTFOUND.getCode(), NOT_FOUND, "존재하지 않는 회원"),
+    CATEGORY_NOT_FOUND(UserCode.CATEGORY_NOTFOUND.getCode(), NOT_FOUND, "존재하지 않는 음식 카테고리"),
     ;
 
     private final String code;
