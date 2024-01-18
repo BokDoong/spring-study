@@ -33,7 +33,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     protected ResponseEntity<ErrorResponse> methodArgumentValidation(MethodArgumentNotValidException e) {
         log.error("handleMethodArgumentNotValidException", e);
-        return ErrorResponse.toResponseEntity(ErrorCode.INVALID_REQUEST_PARAMETER);
+        return ErrorResponse.toResponseEntity(ErrorCode.INVALID_REQUEST_PARAMETER, e.getBindingResult().getFieldError().getDefaultMessage());
     }
 
     // @ModelAttribute 으로 바인딩 에러시 발생
