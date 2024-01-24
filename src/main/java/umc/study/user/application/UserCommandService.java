@@ -12,6 +12,7 @@ import umc.study.user.domain.User;
 import umc.study.user.domain.UserPrefer;
 import umc.study.user.domain.UserRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -27,7 +28,8 @@ public class UserCommandService {
         User user = toUser(userJoinCommand);
         List<FoodCategory> foodCategories = toFoodCategories(userJoinCommand);
 
-        List<UserPrefer> userPrefers = userCommandMapper.toEntities(user, foodCategories);
+        List<UserPrefer> userPrefers = foodCategories.stream()
+                .map(foodCategory -> userCommandMapper.toEntity(user, foodCategory)).collect(Collectors.toList());
         addUserPrefersToUserAndCategories(user, foodCategories, userPrefers);
 
         userRepository.save(user);
@@ -36,8 +38,7 @@ public class UserCommandService {
     private void addUserPrefersToUserAndCategories(User user, List<FoodCategory> foodCategories, List<UserPrefer> userPrefers) {
         userPrefers.forEach(user::addUserPrefer);
         userPrefers.forEach(userPrefer ->
-                foodCategories.forEach(foodCategory ->
-                        foodCategory.addUserPrefer(userPrefer))
+                foodCategories.forEach(foodCategory -> foodCategory.addUserPrefer(userPrefer))
         );
     }
 
