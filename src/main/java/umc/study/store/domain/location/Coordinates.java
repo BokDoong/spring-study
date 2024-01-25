@@ -12,6 +12,6 @@ import javax.persistence.Embeddable;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 public class Coordinates {
-    private long latitude;
-    private long longitude;
+    private Double latitude;
+    private Double longitude;
 }

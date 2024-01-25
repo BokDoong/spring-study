@@ -1,4 +1,4 @@
-package umc.study.exception.global;
+package umc.study.exception.advice;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -18,8 +18,10 @@ import umc.study.exception.BusinessException;
 import umc.study.exception.code.ErrorCode;
 import umc.study.exception.ErrorResponse;
 
-@RestControllerAdvice
+import java.util.Objects;
+
 @Slf4j
+@RestControllerAdvice
 public class GlobalExceptionHandler {
 
     // 비즈니스 예외 처리시 발생
@@ -33,7 +35,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     protected ResponseEntity<ErrorResponse> methodArgumentValidation(MethodArgumentNotValidException e) {
         log.error("handleMethodArgumentNotValidException", e);
-        return ErrorResponse.toResponseEntity(ErrorCode.INVALID_REQUEST_PARAMETER);
+        return ErrorResponse.toResponseEntity(ErrorCode.INVALID_REQUEST_PARAMETER, Objects.requireNonNull(e.getBindingResult().getFieldError()).getDefaultMessage());
     }
 
     // @ModelAttribute 으로 바인딩 에러시 발생
