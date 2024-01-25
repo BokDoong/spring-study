@@ -3,7 +3,7 @@ package umc.study.store.domain;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import umc.study.common.BaseTimeEntity;
+import umc.study.common.basetime.BaseTimeEntity;
 import umc.study.store.domain.image.Images;
 import umc.study.store.domain.location.Address;
 import umc.study.store.domain.location.Coordinates;

@@ -2,7 +2,7 @@ package umc.study.user.domain;
 
 import com.sun.istack.NotNull;
 import lombok.*;
-import umc.study.common.BaseTimeEntity;
+import umc.study.common.basetime.BaseTimeEntity;
 
 import javax.persistence.*;
 

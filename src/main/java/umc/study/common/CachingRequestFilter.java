@@ -1,8 +1,9 @@
-package umc.study.exception.advice;
+package umc.study.common;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 import org.springframework.web.util.ContentCachingRequestWrapper;
+import org.springframework.web.util.ContentCachingResponseWrapper;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -20,8 +21,12 @@ public class CachingRequestFilter extends OncePerRequestFilter {
             filterChain.doFilter(request, response);
             return;
         }
+        // Wrapping
         ContentCachingRequestWrapper wrappingRequest = new ContentCachingRequestWrapper(request);
-        filterChain.doFilter(wrappingRequest, response);
+        ContentCachingResponseWrapper wrappingResponse = new ContentCachingResponseWrapper(response);
+
+        filterChain.doFilter(wrappingRequest, wrappingResponse);
+        wrappingResponse.copyBodyToResponse();
     }
 
     private boolean isMultipartRequest(HttpServletRequest request) {

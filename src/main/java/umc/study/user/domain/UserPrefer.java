@@ -4,7 +4,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import umc.study.common.BaseTimeEntity;
+import umc.study.common.basetime.BaseTimeEntity;
 
 import javax.persistence.*;
 
