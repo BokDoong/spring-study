@@ -1,4 +1,4 @@
-package umc.study.exception.advice;
+package umc.study.common;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.MethodParameter;
@@ -32,7 +32,7 @@ public class CheckingRequestAdapter extends RequestBodyAdviceAdapter {
         logBuilder.append("\n").append(getRequestURI(req)).append("\n");
         logBuilder.append(getAuthorization(req)).append("\n");
         logBuilder.append(getApiKey(req)).append("\n");
-        log.info(logBuilder.toString());
+        // log.info(logBuilder.toString());
 
         return body;
     }

@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import umc.study.exception.advice.LoggingInterceptor;
+import umc.study.common.log.LoggingInterceptor;
 
 @RequiredArgsConstructor
 @Configuration

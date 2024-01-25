@@ -12,7 +12,6 @@ import umc.study.user.domain.User;
 import umc.study.user.domain.UserPrefer;
 import umc.study.user.domain.UserRepository;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 

@@ -1,4 +1,4 @@
-package umc.study.common;
+package umc.study.common.basetime;
 
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;

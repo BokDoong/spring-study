@@ -1,4 +1,4 @@
-package umc.study.common;
+package umc.study.common.log;
 
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
@@ -14,19 +14,17 @@ import java.util.Map;
 @UtilityClass
 public class RequestLogger {
 
-    public static void logging(HttpServletRequest req) {
+    // Request
+    public static void logging(HttpServletRequest request) {
         StringBuilder logBuilder = new StringBuilder();
         logBuilder.append(getLoggingStructure());
-        logBuilder.append(getRequestURI(req)).append("\n");
-        logBuilder.append("[Request Headers]").append("\n").append(parsingHeaders(req)).append("\n");
-        logBuilder.append("[Request Body]").append("\n").append(parsingBody(req)).append("\n");
+        logBuilder.append(getRequestURI(request)).append("\n");
+        logBuilder.append("[Request Headers] ").append(parsingHeaders(request)).append("\n");
+        logBuilder.append("[Request Body] ").append("\n").append(parsingBody(request));
         log.info(logBuilder.toString());
     }
 
-    public static String getLoggingStructure() {
-        return "\n" + "This is Requested Information." + "\n";
-    }
-
+    // Logging Requested URI
     private static String getRequestURI(HttpServletRequest request) {
         String httpMethod = "[HTTP Method] " + request.getMethod();
         String requestURI = "[Request URI] " + request.getRequestURI();
@@ -34,6 +32,7 @@ public class RequestLogger {
         return httpMethod + "\n" + requestURI;
     }
 
+    // Logging Requested Headers
     private static Map<String, Object> parsingHeaders(HttpServletRequest request) {
         Map<String, Object> headerMap = new HashMap<>();
 
@@ -45,8 +44,9 @@ public class RequestLogger {
         return headerMap;
     }
 
+    // Logging Content of RequestBody
     private static String parsingBody(HttpServletRequest request) {
-        ContentCachingRequestWrapper cachingRequest = (ContentCachingRequestWrapper) request;
+        final ContentCachingRequestWrapper cachingRequest = (ContentCachingRequestWrapper) request;
 
         if (request != null) {
             byte[] buf = cachingRequest.getContentAsByteArray();
@@ -59,5 +59,9 @@ public class RequestLogger {
             }
         }
         return "EMPTY BODY ";
+    }
+
+    public static String getLoggingStructure() {
+        return "\n" + "This is Requested Information." + "\n";
     }
 }

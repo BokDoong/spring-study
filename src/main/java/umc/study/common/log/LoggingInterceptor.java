@@ -1,31 +1,42 @@
-package umc.study.exception.advice;
+package umc.study.common.log;
 
 import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
-import umc.study.common.RequestLogger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@Log4j2
+@Slf4j
 @RequiredArgsConstructor
 @Component
 public class LoggingInterceptor implements HandlerInterceptor {
 
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler,
-                                @Nullable Exception ex) throws Exception {
+                                @Nullable Exception ex) {
 
+        // Avoid Wrapping Duplicated
         if (request.getClass().getName().contains("SecurityContextHolderAwareRequestWrapper"))
             return;
 
-        // Request Body 캐싱+로깅
+        // Request Logging
         if (request.getContentType() != null && request.getContentType().contains("application/json")) {
             RequestLogger.logging(request);
         }
+
+        // Successful Response Logging
+        if (isSuccess(response.getStatus())) {
+            ResponseLogger.logging(response);
+        }
+    }
+
+    private boolean isSuccess(int responseStatus) {
+        return !HttpStatus.valueOf(responseStatus).is4xxClientError() && !HttpStatus.valueOf(responseStatus)
+                .is5xxServerError();
     }
 }
 
