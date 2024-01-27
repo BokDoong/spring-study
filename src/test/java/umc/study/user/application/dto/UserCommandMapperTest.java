@@ -3,9 +3,9 @@ package umc.study.user.application.dto;
 import org.junit.jupiter.api.Test;
 import org.mapstruct.factory.Mappers;
 import org.springframework.boot.test.context.SpringBootTest;
-import umc.study.user.domain.FoodCategory;
+import umc.study.user.domain.info.Category;
 import umc.study.user.domain.User;
-import umc.study.user.domain.UserPrefer;
+import umc.study.user.domain.info.UserPrefer;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -24,9 +24,9 @@ class UserCommandMapperTest {
         User testUser = new User("이진", "이복둥", "asda@asdad.com", "lee237"
                 , "010-4937-1765", 1, LocalDateTime.now(), "울산", "남구");
 
-        List<FoodCategory> testFoodCategories = new ArrayList<>();
-        testFoodCategories.add(new FoodCategory("패스트푸드"));
-        testFoodCategories.add(new FoodCategory("중식"));
+        List<Category> testFoodCategories = new ArrayList<>();
+        testFoodCategories.add(new Category("패스트푸드"));
+        testFoodCategories.add(new Category("중식"));
 
         // when
         List<UserPrefer> testUserPrefers = mapper.toEntities(testUser, testFoodCategories);
@@ -34,7 +34,7 @@ class UserCommandMapperTest {
         // then
         assertThat(testUserPrefers.get(0).getUser().getName()).isEqualTo(testUser.getName());
         assertThat(testUserPrefers.get(1).getUser().getName()).isEqualTo(testUser.getName());
-        assertThat(testUserPrefers.get(0).getFoodCategory().getName()).isEqualTo("패스트푸드");
-        assertThat(testUserPrefers.get(1).getFoodCategory().getName()).isEqualTo("중식");
+        assertThat(testUserPrefers.get(0).getCategory().getName()).isEqualTo("패스트푸드");
+        assertThat(testUserPrefers.get(1).getCategory().getName()).isEqualTo("중식");
     }
 }

@@ -2,7 +2,7 @@ package umc.study.user.infra;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
-import umc.study.user.domain.FoodCategory;
+import umc.study.user.domain.info.Category;
 import umc.study.user.domain.User;
 import umc.study.user.domain.UserRepository;
 
@@ -21,7 +21,7 @@ public class UserJpaRepository implements UserRepository {
     }
 
     @Override
-    public Optional<FoodCategory> findCategoryById(Long categoryId) {
-        return Optional.ofNullable(em.find(FoodCategory.class, categoryId));
+    public Optional<Category> findCategoryById(Long categoryId) {
+        return Optional.ofNullable(em.find(Category.class, categoryId));
     }
 }

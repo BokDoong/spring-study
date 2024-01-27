@@ -5,6 +5,9 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import umc.study.common.basetime.BaseTimeEntity;
+import umc.study.store.domain.Store;
+import umc.study.user.domain.User;
+import umc.study.user.domain.UserMission;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -26,17 +29,15 @@ public class Mission extends BaseTimeEntity {
     private Compensation compensation;
     @Column(name = "deadline")
     private LocalDateTime deadline;
-    @Column(name = "store_id")
-    private Long storeId;
 
-    @OneToMany(mappedBy = "mission")
-    private List<MissionUser> missionUsers = new ArrayList<>();
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="store_id")
+    private Store store;
 
     @Builder
-    public Mission(String content, int price, LocalDateTime deadline, Long storeId) {
+    public Mission(String content, int price, LocalDateTime deadline) {
         this.content = content;
         this.compensation = new Compensation(price);
         this.deadline = deadline;
-        this.storeId = storeId;
     }
 }

@@ -2,7 +2,8 @@ package umc.study.user.domain;
 
 import lombok.*;
 import umc.study.common.basetime.BaseTimeEntity;
-import umc.study.mission.domain.MissionUser;
+import umc.study.user.domain.info.Address;
+import umc.study.user.domain.info.UserPrefer;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -40,7 +41,7 @@ public class User extends BaseTimeEntity {
     private Role role;
 
     @OneToMany(mappedBy = "user")
-    private List<MissionUser> missionUsers = new ArrayList<>();
+    private List<UserMission> userMissions = new ArrayList<>();
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<UserPrefer> userPrefers = new ArrayList<>();
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
@@ -59,7 +60,7 @@ public class User extends BaseTimeEntity {
         this.address = new Address(firstAddress, secondAddress);
         this.point = 0;
         this.role = Role.USER;
-        this.missionUsers = new ArrayList<>();
+        this.userMissions = new ArrayList<>();
         this.userPrefers = new ArrayList<>();
     }
 

@@ -2,16 +2,16 @@ package umc.study.user.application.dto;
 
 import org.mapstruct.Mapper;
 import umc.study.user.application.dto.request.UserJoinCommand;
-import umc.study.user.domain.FoodCategory;
+import umc.study.user.domain.info.Category;
 import umc.study.user.domain.User;
-import umc.study.user.domain.UserPrefer;
+import umc.study.user.domain.info.UserPrefer;
 
 @Mapper(componentModel = "spring")
 public interface UserCommandMapper {
 
     User toEntity(UserJoinCommand userJoinCommand);
 
-    UserPrefer toEntity(User user, FoodCategory foodCategory);
+    UserPrefer toEntity(User user, Category category);
 
 //    default List<UserPrefer> toEntities(User user, List<FoodCategory> foodCategories) {
 //        return foodCategories.stream()

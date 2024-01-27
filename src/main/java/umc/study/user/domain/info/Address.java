@@ -1,4 +1,4 @@
-package umc.study.user.domain;
+package umc.study.user.domain.info;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
