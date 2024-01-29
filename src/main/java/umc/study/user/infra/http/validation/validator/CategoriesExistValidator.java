@@ -1,43 +1,46 @@
 package umc.study.user.infra.http.validation.validator;
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
-import org.springframework.web.bind.MethodArgumentNotValidException;
-import umc.study.exception.code.ErrorCode;
-import umc.study.user.infra.http.validation.annotation.VerifyNotExistedCategory;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
-import java.util.ArrayList;
-import java.util.List;
+public enum CategoriesExistValidator {
 
-@Component
-@RequiredArgsConstructor
-public class CategoriesExistValidator implements ConstraintValidator<VerifyNotExistedCategory, List<Long>> {
-    @Override
-    public void initialize(VerifyNotExistedCategory constraintAnnotation) {
-        ConstraintValidator.super.initialize(constraintAnnotation);
+    KOR("한식", 1),
+    JAP("일식", 2),
+    EURO("양식", 3),
+    CHIN("중식", 4),
+    CHICK("치킨", 5),
+    BOON("분식", 6),
+    MEAT("고기/구이", 7),
+    BOX("도시락", 8),
+    SNACK("야식", 9),
+    FAST("패스트푸드", 10),
+    DES("디저트", 11),
+    ASIAN("아시안푸드", 12)
+    ;
+
+    private final String label;
+    private final long number;
+
+    public long number() {
+        return number;
     }
 
-    // 실제로 여기서 검증 -> 들어오는 값은 List<Long> 으로 선언.
-    @Override
-    public boolean isValid(List<Long> requestCategoryIds, ConstraintValidatorContext context) {
-        List<Long> categoryIds = new ArrayList<>();
-        addIds(categoryIds);
-
-        boolean isValid = requestCategoryIds.stream().allMatch(categoryIds::contains);
-        if (!isValid) {
-            context.disableDefaultConstraintViolation();
-            context.buildConstraintViolationWithTemplate(ErrorCode.CATEGORY_NOT_FOUND.getMessage()).addConstraintViolation();
-        }
-
-        return isValid;
-        //return requestCategoryIds.stream().allMatch(categoryIds::contains);
+    CategoriesExistValidator(String label, long number) {
+        this.label = label;
+        this.number = number;
     }
 
-    private void addIds(List<Long> categoryIds) {
-        for (long i = 1; i < 13; i++) {
-            categoryIds.add(i);
+    private static final Map<Long, CategoriesExistValidator> BY_NUMBER =
+            Stream.of(values()).collect(Collectors.toMap(CategoriesExistValidator::number, Function.identity()));
+
+    public static boolean validate(long id) {
+        if (BY_NUMBER.get(id) == null) {
+            return false;
+        } else {
+            return true;
         }
     }
 }

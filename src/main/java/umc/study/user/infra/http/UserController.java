@@ -22,9 +22,7 @@ public class UserController {
     private final UserCommandService userCommandService;
 
     @PostMapping()
-    public UserJoinDto join(@RequestBody @Valid UserJoinDto userJoinDto) {
+    public void join(@RequestBody @Valid UserJoinDto userJoinDto) {
         userCommandService.join(userDtoMapper.toCommand(userJoinDto));
-
-        return userJoinDto;
     }
 }

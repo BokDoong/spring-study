@@ -1,13 +1,13 @@
 package umc.study.user.infra.http.validation.annotation;
 
-import umc.study.user.infra.http.validation.validator.CategoriesExistValidator;
+import umc.study.user.infra.http.validation.validator.UserValidator;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
 import java.lang.annotation.*;
 
 @Documented
-@Constraint(validatedBy = CategoriesExistValidator.class)
+@Constraint(validatedBy = UserValidator.class)
 @Target( {ElementType.METHOD, ElementType.FIELD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface VerifyNotExistedCategory {
