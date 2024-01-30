@@ -1,10 +1,10 @@
-package umc.study.review.domain.image;
+package umc.study.store.domain.review.image;
 
 import com.sun.istack.NotNull;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import umc.study.review.domain.Review;
+import umc.study.store.domain.review.Review;
 
 import javax.persistence.*;
 

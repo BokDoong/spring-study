@@ -1,6 +1,7 @@
-package umc.study.review.domain;
+package umc.study.store.domain.review;
 
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import umc.study.store.domain.Store;
@@ -20,7 +21,7 @@ public class Review {
     @Column(name = "content")
     private String content;
     @Column(name = "rating")
-    private Long rating;
+    private Float rating;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
@@ -28,4 +29,12 @@ public class Review {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "store_id")
     private Store store;
+
+    @Builder
+    public Review(String content, Float rating, User user, Store store) {
+        this.content = content;
+        this.rating = rating;
+        this.user = user;
+        this.store = store;
+    }
 }

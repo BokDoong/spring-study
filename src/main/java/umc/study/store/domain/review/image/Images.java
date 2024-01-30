@@ -1,4 +1,4 @@
-package umc.study.review.domain.image;
+package umc.study.store.domain.review.image;
 
 import javax.persistence.Embeddable;
 import javax.persistence.OneToMany;
