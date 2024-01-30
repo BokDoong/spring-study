@@ -1,4 +1,4 @@
-package umc.study.store.domain.review.image;
+package umc.study.store.domain.review;
 
 import com.sun.istack.NotNull;
 import lombok.AccessLevel;

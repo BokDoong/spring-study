@@ -5,13 +5,15 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import umc.study.common.basetime.BaseTimeEntity;
-import umc.study.store.domain.image.Images;
 import umc.study.store.domain.location.Address;
 import umc.study.store.domain.location.Region;
+import umc.study.store.domain.review.Review;
 import umc.study.user.domain.info.Category;
 
 import javax.persistence.*;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -37,6 +39,8 @@ public class Store extends BaseTimeEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "region_id")
     private Region region;
+    @OneToMany(mappedBy = "store", cascade = CascadeType.REMOVE)
+    private List<Review> reviews;
 
     @Builder
     public Store(String name, LocalTime openTime, LocalTime closeTime,
@@ -46,6 +50,11 @@ public class Store extends BaseTimeEntity {
         this.address = new Address(firstAddress, secondAddress);
         this.category = category;
         this.region = region;
+        images = new Images();
+        reviews = new ArrayList<>();
     }
 
+    public void addReview(Review review) {
+        reviews.add(review);
+    }
 }

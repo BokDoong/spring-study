@@ -3,7 +3,9 @@ package umc.study.store.infra.http.dto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
-import umc.study.store.application.dto.StoreCreateCommand;
+import umc.study.store.application.dto.request.ReviewCreateCommand;
+import umc.study.store.application.dto.request.StoreCreateCommand;
+import umc.study.store.infra.http.dto.request.ReviewCreateDto;
 import umc.study.store.infra.http.dto.request.StoreRegisterDto;
 import umc.study.store.domain.location.Region;
 
@@ -13,4 +15,7 @@ public interface StoreDtoMapper {
 
     @Mapping(target = "regionAddress", expression = "java(Region.extractTown(registerDto.getFirstAddress()))")
     StoreCreateCommand toCommand(StoreRegisterDto registerDto);
+
+    ReviewCreateCommand toCommand(ReviewCreateDto reviewCreateDto);
+
 }

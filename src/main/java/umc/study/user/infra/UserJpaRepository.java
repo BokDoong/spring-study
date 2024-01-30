@@ -21,6 +21,11 @@ public class UserJpaRepository implements UserRepository {
     }
 
     @Override
+    public Optional<User> findById(long userId) {
+        return Optional.ofNullable(em.find(User.class, userId));
+    }
+
+    @Override
     public Optional<Category> findCategoryById(Long categoryId) {
         return Optional.ofNullable(em.find(Category.class, categoryId));
     }

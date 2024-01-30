@@ -4,14 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
-import umc.study.store.application.dto.StoreCreateCommand;
-import umc.study.store.application.dto.StoreCreateCommand.StoreCreateCommandBuilder;
+import umc.study.store.application.dto.request.ReviewCreateCommand;
+import umc.study.store.application.dto.request.ReviewCreateCommand.ReviewCreateCommandBuilder;
+import umc.study.store.application.dto.request.StoreCreateCommand;
+import umc.study.store.application.dto.request.StoreCreateCommand.StoreCreateCommandBuilder;
 import umc.study.store.domain.location.Region;
+import umc.study.store.infra.http.dto.request.ReviewCreateDto;
 import umc.study.store.infra.http.dto.request.StoreRegisterDto;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-01-30T14:27:31+0900",
+    date = "2024-01-30T15:55:18+0900",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 17.0.5 (JetBrains s.r.o.)"
 )
 @Component
@@ -38,5 +41,19 @@ public class StoreDtoMapperImpl implements StoreDtoMapper {
         storeCreateCommand.regionAddress( Region.extractTown(registerDto.getFirstAddress()) );
 
         return storeCreateCommand.build();
+    }
+
+    @Override
+    public ReviewCreateCommand toCommand(ReviewCreateDto reviewCreateDto) {
+        if ( reviewCreateDto == null ) {
+            return null;
+        }
+
+        ReviewCreateCommandBuilder reviewCreateCommand = ReviewCreateCommand.builder();
+
+        reviewCreateCommand.content( reviewCreateDto.getContent() );
+        reviewCreateCommand.rating( reviewCreateDto.getRating() );
+
+        return reviewCreateCommand.build();
     }
 }

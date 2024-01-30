@@ -22,6 +22,8 @@ public class Review {
     private String content;
     @Column(name = "rating")
     private Float rating;
+    @Embedded
+    private Images images;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
@@ -36,5 +38,6 @@ public class Review {
         this.rating = rating;
         this.user = user;
         this.store = store;
+        images = new Images();
     }
 }

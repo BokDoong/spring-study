@@ -1,4 +1,4 @@
-package umc.study.store.application.dto;
+package umc.study.store.application.dto.request;
 
 import lombok.Builder;
 import lombok.Getter;

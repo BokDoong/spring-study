@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 import umc.study.store.domain.Store;
 import umc.study.store.domain.StoreRepository;
 import umc.study.store.domain.location.Region;
+import umc.study.store.domain.review.Review;
 
 import javax.persistence.EntityManager;
 import java.util.List;
@@ -17,7 +18,7 @@ public class StoreJpaRepository implements StoreRepository {
     private final EntityManager em;
 
     @Override
-    public Optional<Store> find(long storeId) {
+    public Optional<Store> findById(long storeId) {
         return Optional.ofNullable(em.find(Store.class, storeId));
     }
 
@@ -33,12 +34,19 @@ public class StoreJpaRepository implements StoreRepository {
     }
 
     @Override
-    public void save(Region newRegion) {
+    public Region save(Region newRegion) {
         em.persist(newRegion);
+
+        return newRegion;
     }
 
     @Override
     public void save(Store store) {
         em.persist(store);
+    }
+
+    @Override
+    public void save(Review review) {
+        em.persist(review);
     }
 }

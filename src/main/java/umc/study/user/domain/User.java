@@ -2,6 +2,7 @@ package umc.study.user.domain;
 
 import lombok.*;
 import umc.study.common.basetime.BaseTimeEntity;
+import umc.study.store.domain.review.Review;
 import umc.study.user.domain.info.Address;
 import umc.study.user.domain.info.UserPrefer;
 
@@ -46,6 +47,8 @@ public class User extends BaseTimeEntity {
     private List<UserPrefer> userPrefers = new ArrayList<>();
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private UserImage userImage = new UserImage();
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+    private List<Review> reviews = new ArrayList<>();
 
     @Builder
     public User(String name, String nickname, String email, String password, String phoneNumber, Integer genderId,
@@ -57,11 +60,12 @@ public class User extends BaseTimeEntity {
         this.phoneNumber = phoneNumber;
         this.userGender = toGender(genderId);
         this.birthDate = birthDate;
-        this.address = new Address(firstAddress, secondAddress);
-        this.point = 0;
-        this.role = Role.USER;
-        this.userMissions = new ArrayList<>();
-        this.userPrefers = new ArrayList<>();
+        address = new Address(firstAddress, secondAddress);
+        point = 0;
+        role = Role.USER;
+        userMissions = new ArrayList<>();
+        userPrefers = new ArrayList<>();
+        reviews = new ArrayList<>();
     }
 
     @Getter
@@ -90,5 +94,9 @@ public class User extends BaseTimeEntity {
 
     public void addUserPrefer(UserPrefer userPrefer) {
         userPrefers.add(userPrefer);
+    }
+
+    public void addReview(Review review) {
+        reviews.add(review);
     }
 }

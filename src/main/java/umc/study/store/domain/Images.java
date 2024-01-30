@@ -1,4 +1,4 @@
-package umc.study.store.domain.image;
+package umc.study.store.domain;
 
 import javax.persistence.Embeddable;
 import javax.persistence.OneToMany;

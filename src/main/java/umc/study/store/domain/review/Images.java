@@ -1,4 +1,4 @@
-package umc.study.store.domain.review.image;
+package umc.study.store.domain.review;
 
 import javax.persistence.Embeddable;
 import javax.persistence.OneToMany;
@@ -13,7 +13,8 @@ public class Images {
     private final List<ReviewImage> reviewImages;
 
     protected Images() {
-        this.reviewImages = new LinkedList<>();}
+        this.reviewImages = new LinkedList<>();
+    }
 
     List<ReviewImage> getImages() {
         return Collections.unmodifiableList(reviewImages);
