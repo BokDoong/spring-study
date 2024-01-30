@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-public class UserPrefer extends BaseTimeEntity {
+public class UserPrefer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

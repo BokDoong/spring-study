@@ -37,6 +37,9 @@ dependencies {
 			'org.projectlombok:lombok-mapstruct-binding:0.1.0',
 			'org.mapstruct:mapstruct-processor:1.4.2.Final'
 	)
+
+	testCompileOnly 'org.projectlombok:lombok'
+	testAnnotationProcessor 'org.projectlombok:lombok'
 }
 
 tasks.named('bootBuildImage') {

@@ -14,7 +14,7 @@ import java.util.List;
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-public class Category extends BaseTimeEntity {
+public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,9 +32,14 @@ public class Category extends BaseTimeEntity {
     public Category(String name) {
         this.name = name;
         this.userPrefers = new ArrayList<>();
+        this.stores = new ArrayList<>();
     }
 
     public void addUserPrefer(UserPrefer userPrefer) {
         userPrefers.add(userPrefer);
+    }
+
+    public void addStore(Store store) {
+        stores.add(store);
     }
 }

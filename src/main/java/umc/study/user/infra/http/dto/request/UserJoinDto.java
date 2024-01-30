@@ -1,9 +1,8 @@
 package umc.study.user.infra.http.dto.request;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import umc.study.user.infra.http.validation.annotation.VerifyNotExistedCategory;
+import umc.study.common.validator.VerifyNotExistedCategory;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -12,7 +11,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter
-@AllArgsConstructor
 public class UserJoinDto {
     @NotBlank(message = "username is blank")
     private String name;

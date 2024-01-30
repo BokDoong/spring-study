@@ -1,9 +1,8 @@
-package umc.study.user.infra.http.validation.validator;
+package umc.study.common.validator;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import umc.study.exception.code.ErrorCode;
-import umc.study.user.infra.http.validation.annotation.VerifyNotExistedCategory;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
@@ -11,7 +10,7 @@ import java.util.List;
 
 @Component
 @RequiredArgsConstructor
-public class UserValidator implements ConstraintValidator<VerifyNotExistedCategory, List<Long>> {
+public class CategoryExistsValidator implements ConstraintValidator<VerifyNotExistedCategory, List<Long>> {
     @Override
     public void initialize(VerifyNotExistedCategory constraintAnnotation) {
         ConstraintValidator.super.initialize(constraintAnnotation);

@@ -1,4 +1,4 @@
-package umc.study.store.domain.location;
+package umc.study.store.domain;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -7,14 +7,15 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import java.time.LocalTime;
 
 @Embeddable
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-public class Address {
-    @Column(name = "first_name")
-    private String firstName;
-    @Column(name = "second_name")
-    private String secondName;
+public class BusinessHours {
+    @Column(name = "open_time")
+    private LocalTime openTime;
+    @Column(name = "closed_time")
+    private LocalTime closedTime;
 }

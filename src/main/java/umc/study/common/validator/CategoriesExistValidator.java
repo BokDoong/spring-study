@@ -1,4 +1,4 @@
-package umc.study.user.infra.http.validation.validator;
+package umc.study.common.validator;
 
 import java.util.Map;
 import java.util.function.Function;
