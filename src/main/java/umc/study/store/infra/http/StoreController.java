@@ -9,9 +9,9 @@ import umc.study.store.infra.http.dto.request.StoreRegisterDto;
 
 import javax.validation.Valid;
 
+@RestController
 @RequestMapping("/api/v1/stores")
 @RequiredArgsConstructor
-@RestController
 public class StoreController {
 
     private final StoreCommandService storeCommandService;

@@ -18,7 +18,7 @@ public class StoreRegisterDto {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "kk:mm:ss", timezone = "Asia/Seoul")
     private LocalTime closeTime;
     @NotBlank(message = "address is blank")
-    @Pattern(regexp = "^[가-힣]+\\s.*구.*$", message = "주소 형식이 올바르지 않습니다.")
+    @Pattern(regexp = "^[가-힣]+\\s.*구.*$", message = "The address format is not valid")
     private String firstAddress;
     @NotBlank(message = "address is blank")
     private String secondAddress;

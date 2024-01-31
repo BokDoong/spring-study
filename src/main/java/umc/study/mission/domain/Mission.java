@@ -35,9 +35,10 @@ public class Mission extends BaseTimeEntity {
     private Store store;
 
     @Builder
-    public Mission(String content, int price, LocalDateTime deadline) {
+    public Mission(Store store, String content, int price, LocalDateTime deadline) {
+        this.store = store;
         this.content = content;
-        this.compensation = new Compensation(price);
         this.deadline = deadline;
+        compensation = new Compensation(price);
     }
 }

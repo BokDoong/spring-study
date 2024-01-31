@@ -7,8 +7,8 @@ import javax.validation.constraints.NotNull;
 
 @Getter
 public class ReviewCreateDto {
-    @NotBlank(message = "리뷰 내용이 없습니다.")
-    String content;
-    @NotNull(message = "평점이 없습니다.")
-    float rating;
+    @NotBlank(message = "content is null")
+    private String content;
+    @NotNull(message = "rating is null")
+    private float rating;
 }
