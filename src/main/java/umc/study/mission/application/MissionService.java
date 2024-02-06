@@ -24,11 +24,13 @@ public class MissionService {
         Store store = findStore(storeId);
         // 2. Mission 생성
         registerAndSaveMission(store, missionCreateCommand);
+        return 0L;
     }
 
     private long registerAndSaveMission(Store store, MissionCreateCommand missionCreateCommand) {
         Mission mission = registerMission(store, missionCreateCommand);
         // ㅁㅇㅁㄴㅇㅁㅇㄴㅁ
+        return 0L;
     }
 
     private Mission registerMission(Store store, MissionCreateCommand missionCreateCommand) {

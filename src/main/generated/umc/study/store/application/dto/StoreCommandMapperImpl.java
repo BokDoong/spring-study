@@ -14,7 +14,7 @@ import umc.study.user.domain.info.Category;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-01-30T17:01:52+0900",
+    date = "2024-02-06T11:11:55+0900",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 17.0.5 (JetBrains s.r.o.)"
 )
 @Component

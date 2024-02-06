@@ -2,6 +2,7 @@ package umc.study.user.domain;
 
 import lombok.*;
 import umc.study.common.basetime.BaseTimeEntity;
+import umc.study.config.WebSecurityConfig;
 import umc.study.store.domain.review.Review;
 import umc.study.user.domain.info.Address;
 import umc.study.user.domain.info.UserPrefer;
@@ -10,6 +11,8 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+
+import static umc.study.config.WebSecurityConfig.*;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -56,7 +59,7 @@ public class User extends BaseTimeEntity {
         this.name = name;
         this.nickname = nickname;
         this.email = email;
-        this.password = password;
+        this.password = encoder().encode(password);
         this.phoneNumber = phoneNumber;
         this.userGender = toGender(genderId);
         this.birthDate = birthDate;

@@ -1,5 +1,6 @@
 package umc.study.user.application.dto;
 
+import lombok.RequiredArgsConstructor;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 import umc.study.user.application.dto.request.UserJoinCommand;

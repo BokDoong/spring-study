@@ -14,13 +14,13 @@ public class MissionController {
 
     private final MissionService missionService;
 
-    @PostMapping()
-    public long register(@RequestParam long storeId, @RequestBody @Valid MissionCreateDto missionCreateDto) {
-        // 가게에 미션 추가
-    }
+//    @PostMapping()
+//    public long register(@RequestParam long storeId, @RequestBody @Valid MissionCreateDto missionCreateDto) {
+//        // 가게에 미션 추가
+//    }
 
-    @PostMapping("/{missionId}")
-    public long challenge(@PathVariable("missionId") long missionId) {
-        // 유저 미션 도전
-    }
+//    @PostMapping("/{missionId}")
+//    public long challenge(@PathVariable("missionId") long missionId) {
+//        // 유저 미션 도전
+//    }
 }
